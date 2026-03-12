@@ -80,11 +80,11 @@ carapicuibaemdados/
 ├── app.py                          # Página inicial
 ├── data_collectors.py              # Módulo de coleta de dados
 ├── pages/                          # Painéis do dashboard
-│   ├── 1_💧_Saneamento_vs_Saúde.py
-│   ├── 2_📚_Educação_vs_Desempenho.py
-│   ├── 3_💰_PIB_vs_Mortalidade.py
-│   ├── 4_🏥_Cobertura_Saúde.py
-│   └── 5_ℹ️_Sobre.py
+│   ├── 1_saneamento_vs_saude.py
+│   ├── 2_educacao_vs_desempenho.py
+│   ├── 3_pib_vs_mortalidade.py
+│   ├── 4_cobertura_saude.py
+│   └── 5_sobre.py
 ├── data/                           # Dados de fallback (CSV)
 │   ├── saneamento.csv
 │   ├── saude_internacoes.csv

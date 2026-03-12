@@ -1,0 +1,32 @@
+name: Deploy to Sliplane
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build Docker image
+      run: docker build -t carapicuiba-dados .
+    
+    - name: Test Docker image
+      run: |
+        docker run -d -p 8501:8501 --name test-app carapicuiba-dados
+        sleep 10
+        curl -f http://localhost:8501/_stcore/health || exit 1
+        docker stop test-app
+        docker rm test-app
+    
+    # Sliplane fará o deploy automático ao detectar push no GitHub
+    # Não é necessário step adicional se o repositório estiver conectado
